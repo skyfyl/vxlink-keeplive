@@ -45,7 +45,7 @@ if __name__ == "__main__":
     ids = cfg.get('nodes','nodes_ids').split(',')
     on_time = str(cfg.get('time','keep_on_time'))
     off_time = str(cfg.get('time','keep_off_time'))
-    # run("endysaiwang","a123456", "keep_off", ids)
+    # run("test","123456", "keep_off", ids)
     logging.info("start work, on time: {}, off time: {}".format(on_time, off_time))
     schedule.every().day.at(on_time).do(run, user= user,pwd=pwd, keep_type="keep_on", ids = ids)
     schedule.every().day.at(off_time).do(run, user= user,pwd=pwd, keep_type="keep_off", ids = ids)
