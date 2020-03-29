@@ -46,6 +46,11 @@ if __name__ == "__main__":
 
     if sys.argv[1] == 'schedule':
         logging.info("start work, on time: {}, off time: {}".format(on_time, off_time))
+        if sys.argv[2]:
+            if sys.argv[2] == 'hour':
+                schedule.every().hour.do(run, user= user,pwd=pwd, keep_type="keep_on", ids = ids, server=server, serverpwd=serverpwd)
+            elif sys.argv[2] == 'minute':
+               schedule.every(5).minutes.do(run, user= user,pwd=pwd, keep_type="keep_on", ids = ids, server=server, serverpwd=serverpwd)
         schedule.every().day.at(on_time).do(run, user= user,pwd=pwd, keep_type="keep_on", ids = ids, server=server, serverpwd=serverpwd)
         schedule.every().day.at(off_time).do(run, user= user,pwd=pwd, keep_type="keep_off", ids = ids, server=server, serverpwd=serverpwd)
         while True:
